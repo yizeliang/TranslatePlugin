@@ -1,8 +1,9 @@
-# MyMvpHelper
+# Idea/AndroidStudio插件学习记录
 
 ## 说明
 
-只为学习使用
+只为学习使用,环境配置请百度
+资料太少了
 
 ## 1 常用API
 
@@ -91,6 +92,73 @@ private void changeSelectText(String text) {
 
 ```
 
+**关于Dialog的操作和java swing类似,可以搜索java swing的资料**
+
+```java
+
+        //设置大小
+        setMinimumSize(new Dimension(800,800));
+        //居中
+        Toolkit kit = Toolkit.getDefaultToolkit(); // 定义工具包
+        Dimension screenSize = kit.getScreenSize(); // 获取屏幕的尺寸
+        int screenWidth = screenSize.width / 2; // 获取屏幕的宽
+        int screenHeight = screenSize.height / 2; // 获取屏幕的高
+        int height = this.getHeight();
+        int width = this.getWidth();
+        setLocation(screenWidth - width / 2, screenHeight - height / 2);
+        //使用
+         TestDialog testDialog = new TestDialog();
+         testDialog.setVisible(true);
+```
+
+**关于设置信息的保存,直接引用了别人写好的一个类,很简单**
+```java
+
+
+import com.intellij.ide.util.PropertiesComponent;
+
+/**
+ * Created by Roy on 2016/7/8.
+ */
+public class PropertiesUtil {
+
+    private static final String PROPERYIES_NAME_LIST = "varnamesettings_list";
+    private static final String PROPERYIES_NAME_CHECKBOX = "varnamesettings_check";
+
+    /**
+     * 获取设置参数列表
+     *
+     * @return
+     */
+    public static String[] getProperties() {
+        if (PropertiesComponent.getInstance().isValueSet(PROPERYIES_NAME_LIST)) {
+            return PropertiesComponent.getInstance().getValues(PROPERYIES_NAME_LIST);
+        } 
+    }
+
+    /**
+     * 保存参数列表
+     *
+     * @param array
+     */
+    public static void saveProperties(String[] array) {
+        PropertiesComponent.getInstance().setValues(PROPERYIES_NAME_LIST, array);
+    }
+
+    /**
+     * 保存复选框状态
+     *
+     * @param selected
+     */
+    public static void saveCheckBoxSelectState(boolean selected) {
+        PropertiesComponent.getInstance().setValue(PROPERYIES_NAME_CHECKBOX, selected);
+    }
+
+}
+
+```
+
+
 ## 2 action groups
 
 - GenerateGroup
@@ -104,8 +172,6 @@ private void changeSelectText(String text) {
 其他:
 具体的每个group-id的含义可参看：
 http://keithlea.com/idea-actions/
-
-
 
 
 ## 参考

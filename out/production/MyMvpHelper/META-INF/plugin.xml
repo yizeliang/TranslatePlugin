@@ -36,6 +36,10 @@
             <add-to-group group-id="EditSelectWordGroup" anchor="first"/>
             <keyboard-shortcut keymap="$default" first-keystroke="alt M"/>
         </action>
+        <action id="TestDialogMenu" class="cn.yzl.dialog.TestDialogMenu" text="TestDialogMenu"
+                description="TestDialogMenu">
+            <add-to-group group-id="WindowMenu" anchor="first"/>
+        </action>
     </actions>
 
 </idea-plugin>
