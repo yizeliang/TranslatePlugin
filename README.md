@@ -4,6 +4,7 @@
 
 只为学习使用
 
+## 1 常用API
 
 ```java
 
@@ -25,9 +26,84 @@ VirtualFile currentFile = DataKeys.VIRTUAL_FILE.getData(AnActionEvent.getDataCon
 ```
 
 
+```java
+//根据情况选择是否显示 菜单
+ public static String getFileExtension(DataContext dataContext) {
+        VirtualFile file = DataKeys.VIRTUAL_FILE.getData(dataContext);
+        return file == null ? null : file.getExtension();
+    }
+    
+  @Override
+    public void update(AnActionEvent event) {
+        //在Action显示之前,根据选中文件扩展名判定是否显示此Action
+        String extension = getFileExtension(event.getDataContext());
+        this.getTemplatePresentation().setEnabled(extension != null && "jar".equals(extension));
+    }
+
+```
+
+```java
+//修改完目录结构后,刷新目录结构
+  // 第一个参数:是否异步
+  //第二个参数:是否递归
+  //第三个参数:完成后的回调
+  //不建议获取项目的baseDir.使用的时候可以获取生成的当前目录,类型为 VirtualFile
+  getEventProject(e).getBaseDir().refresh(true, true, new Runnable() {
+                @Override
+                public void run() {
+                    MessagesCenter.showMessage("目录刷新成功", "创建成功");
+                }
+            });
+
+```
 
 
+```java
+//悬浮框的展示
+ JBPopupFactory factory = JBPopupFactory.getInstance();
+                factory.createHtmlTextBalloonBuilder(result, null, 
+                new JBColor(new Color(186, 238, 186),
+                 new Color(73, 117, 73)), null)
+                        .setFadeoutTime(5000)
+                        .createBalloon()
+                        .show(factory.guessBestPopupLocation(editor), Balloon.Position.below);
+```
 
+
+```java
+//替换内容
+private void changeSelectText(String text) {
+    Project  mProject = e.getData(PlatformDataKeys.PROJECT);
+    Document document = mEditor.getDocument();
+    SelectionModel selectionModel = mEditor.getSelectionModel();
+
+    final int start = selectionModel.getSelectionStart();
+    final int end = selectionModel.getSelectionEnd();
+    Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            document.replaceString(start, end, text);
+        }
+    };
+    WriteCommandAction.runWriteCommandAction(mProject, runnable);
+    selectionModel.removeSelection();
+}
+
+```
+
+## 2 action groups
+
+- GenerateGroup
+
+![1.png](https://ooo.0o0.ooo/2017/04/25/58feabb91e31d.png)
+
+- EditorMenu
+
+![2.png](https://ooo.0o0.ooo/2017/04/25/58feac0db7986.png)
+
+其他:
+具体的每个group-id的含义可参看：
+http://keithlea.com/idea-actions/
 
 
 

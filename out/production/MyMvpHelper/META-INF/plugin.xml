@@ -1,37 +1,41 @@
 <idea-plugin version="2">
-  <id>cn.yzl.mvphelper</id>
-  <name>MyMvpHelper</name>
-  <version>1.0.0</version>
-  <vendor email="yizeliang@126.com" url="https://github.com/yizeliang">github_yzl</vendor>
+    <id>cn.yzl.mvphelper</id>
+    <name>MyMvpHelper</name>
+    <version>1.0.0</version>
+    <vendor email="yizeliang@126.com" url="https://github.com/yizeliang">github_yzl</vendor>
 
-  <description><![CDATA[
+    <description><![CDATA[
       一款自动生成mvp结构的插件,只为学习使用<br>
-      <em>most HTML tags may be used</em>
     ]]></description>
 
-  <change-notes><![CDATA[
+    <change-notes><![CDATA[
       Add change notes here.<br>
       <em>most HTML tags may be used</em>
     ]]>
-  </change-notes>
+    </change-notes>
 
-  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-  <idea-version since-build="145.0"/>
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="145.0"/>
 
-  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
-       on how to target different products -->
-  <!-- uncomment to enable plugin in all products
-  <depends>com.intellij.modules.lang</depends>
-  -->
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
 
-  <extensions defaultExtensionNs="com.intellij">
-    <!-- Add your extensions here -->
-  </extensions>
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
 
-  <actions>
-    <action id="MvpHelperAction" class="cn.yzl.MvpHelperAction" text="MvpHelperAction" description="MvpHelperAction">
-      <add-to-group group-id="EditMenu" anchor="first"/>
-    </action>
-  </actions>
+    <actions>
+        <action id="MvpHelperAction" class="cn.yzl.mvp.MvpHelperAction" text="MvpHelperAction"
+                description="MvpHelperAction">
+            <add-to-group group-id="JavaGenerateGroup2" anchor="first"/>
+        </action>
+        <action id="Translate" class="cn.yzl.translate.Translate" text="Translate" description="翻译插件">
+            <add-to-group group-id="EditSelectWordGroup" anchor="first"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="alt M"/>
+        </action>
+    </actions>
 
 </idea-plugin>

@@ -1,4 +1,4 @@
-package cn.yzl;
+package cn.yzl.utils;
 
 import com.intellij.openapi.ui.Messages;
 

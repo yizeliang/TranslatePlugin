@@ -9,5 +9,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="fastjson" level="project" />
+    <orderEntry type="library" name="httpclient-4.5.3" level="project" />
   </component>
 </module>
