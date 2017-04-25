@@ -42,7 +42,7 @@ public class ClassCreateHelper {
         FileWriter fileWriter = new FileWriter(targetFile);
         StringBuffer sb = new StringBuffer();
         sb.append("package " + packageName + ";\n");
-        sb.append("import com.qianfan365.android.ebilling.hd.base.mvp.BaseView;\n\n");
+
         sb.append("public interface " + className + "View extends BaseView" + " {" + "\n");
         sb.append("}");
         fileWriter.write(sb.toString());
@@ -62,7 +62,7 @@ public class ClassCreateHelper {
         StringBuffer sb = new StringBuffer();
         sb.append("package " + packageName + ";\n\n");
 
-        sb.append("import com.qianfan365.android.ebilling.hd.base.mvp.BasePresenter;\n\n");
+
 
 
         sb.append("public class " + className + "Presenter extends BasePresenter<" + className + "View>" + " {" + "\n\n");
