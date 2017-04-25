@@ -27,7 +27,7 @@ VirtualFile currentFile = DataKeys.VIRTUAL_FILE.getData(AnActionEvent.getDataCon
 
 
 ```java
-//根据情况选择是否显示 菜单
+//根据情况选择是否显示 菜单 (不会用,暂时没有使用)
  public static String getFileExtension(DataContext dataContext) {
         VirtualFile file = DataKeys.VIRTUAL_FILE.getData(dataContext);
         return file == null ? null : file.getExtension();
@@ -113,4 +113,6 @@ http://keithlea.com/idea-actions/
 http://blog.csdn.net/lmj623565791/article/details/51548272#t0
 
 https://github.com/githubwing/MVPHelper
+
+http://www.jianshu.com/p/f017097e4b26
 
