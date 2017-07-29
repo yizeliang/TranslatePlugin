@@ -5,10 +5,11 @@
     <vendor email="yizeliang@126.com" url="https://github.com/yizeliang">github_yzl</vendor>
 
     <description><![CDATA[
-      一款自动生成mvp结构的插件,只为学习使用<br>
+     翻译<br>
     ]]></description>
 
-    <change-notes><![CDATA[
+    <change-notes>
+        <![CDATA[
       Add change notes here.<br>
       <em>most HTML tags may be used</em>
     ]]>
@@ -23,22 +24,14 @@
     <depends>com.intellij.modules.lang</depends>
     -->
 
-    <extensions defaultExtensionNs="com.intellij">
-        <!-- Add your extensions here -->
-    </extensions>
+    <!--<extensions defaultExtensionNs="com.intellij">-->
+        <!--<applicationConfigurable instance="cn.yzl.properties.Property"/>-->
+    <!--</extensions>-->
 
     <actions>
-        <action id="MvpHelperAction" class="cn.yzl.mvp.MvpHelperAction" text="MvpHelperAction"
-                description="MvpHelperAction">
-            <add-to-group group-id="JavaGenerateGroup2" anchor="first"/>
-        </action>
         <action id="Translate" class="cn.yzl.translate.Translate" text="Translate" description="翻译插件">
             <add-to-group group-id="EditSelectWordGroup" anchor="first"/>
             <keyboard-shortcut keymap="$default" first-keystroke="alt M"/>
-        </action>
-        <action id="TestDialogMenu" class="cn.yzl.dialog.TestDialogMenu" text="TestDialogMenu"
-                description="TestDialogMenu">
-            <add-to-group group-id="WindowMenu" anchor="first"/>
         </action>
     </actions>
 
