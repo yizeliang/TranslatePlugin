@@ -12,9 +12,7 @@ import org.apache.http.util.EntityUtils;
  */
 public class TranslateUtil {
 
-    public static final String url =
-            "http://fanyi.youdao.com/openapi.do" +
-                    "";
+    public static final String url ="http://fanyi.youdao.com/openapi.do=Translateyizeliang&key=255126412&type=data&doctype=json&version=1.1&q=";
 
 
     /**
