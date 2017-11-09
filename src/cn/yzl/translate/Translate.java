@@ -1,7 +1,9 @@
 package cn.yzl.translate;
 
+import cn.yzl.baidu.TransApi;
 import cn.yzl.utils.FileUtil;
 import cn.yzl.utils.MessagesCenter;
+import com.alibaba.fastjson.JSON;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
@@ -24,7 +26,6 @@ public class Translate extends AnAction {
 
     Editor editor;
     private String selectedText;
-
     @Override
     public void actionPerformed(AnActionEvent event) {
         try {
@@ -34,28 +35,26 @@ public class Translate extends AnAction {
             if (selectedText == null || selectedText.equals("")) {
                 return;
             }
-            Modle modle = TranslateUtil.translateToEn(selectedText);
-            String resultText = modle.getTranslation().get(0);
+            Modle modle = JSON.parseObject(TransApi.getINSTANCE().getTransResult(selectedText), Modle.class);
 
-            if (resultText == null) {
+            if (!modle.haveData()) {
+                MessagesCenter.showErrorMessage("翻译失败", "插件错误");
                 return;
             }
 
-            String start = resultText.substring(0, 1);
-            String end = resultText.substring(1, resultText.length());
-
-            resultText = start.toUpperCase() + end;
-
-            editor.getDocument().getText().replace(selectedText, resultText);
-
-            FileUtil.getCurFile(event).refresh(false, false);
+            String resultText = modle.trans_result.get(0).dst;
+//
+//            editor.getDocument().getText().replace(selectedText, resultText);
+//
+//            FileUtil.getCurFile(event).refresh(false, false);
 
 //            MessagesCenter.showErrorMessage(resultText, "成功");
             if (StringUtil.isContainChinese(selectedText)) {
+                resultText = StringUtil.upDataString(resultText);
                 changeSelectText(event, resultText);
             } else {
                 JBPopupFactory jbPopupFactory = JBPopupFactory.getInstance();
-                jbPopupFactory.createHtmlTextBalloonBuilder(modle.toString(),
+                jbPopupFactory.createHtmlTextBalloonBuilder(modle.getStringResult(),
                         null,
                         new JBColor(new Color(186, 238, 186),
                                 new Color(73, 117, 73)),
@@ -66,10 +65,10 @@ public class Translate extends AnAction {
                                 Balloon.Position.below);
             }
         } catch (NullPointerException e) {
-            MessagesCenter.showErrorMessage("翻译失败","插件错误");
+            MessagesCenter.showErrorMessage("翻译失败", "插件错误");
         } catch (Exception e1) {
             e1.printStackTrace();
-            MessagesCenter.showErrorMessage("翻译失败","插件错误");
+            MessagesCenter.showErrorMessage("翻译失败", "插件错误");
         }
     }
 

@@ -2,8 +2,15 @@
 
 ## 说明
 
-只为学习使用,环境配置请百度
-资料太少了
+
+采用百度翻译API
+
+http://api.fanyi.baidu.com/api/trans/product/apidoc
+
+参考:
+http://www.jianshu.com/p/6e41b83b5505
+http://www.jianshu.com/p/f017097e4b26
+
 
 ## 1 常用API
 
