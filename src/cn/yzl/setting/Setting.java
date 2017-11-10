@@ -14,12 +14,13 @@ import javax.swing.*;
  */
 public class Setting implements Configurable {
 
-    public static final String KEY_APP_ID = "cn_yzl_bd_translate_appid";
+    public static final String KEY_APP_ID = "cn_yzl_bd_translate_app_id";
     public static final String KEY_APP_KEY = "cn_yzl_bd_translate_app_key";
 
     private JTextField etAppid;
     private JTextField etAppKey;
     private JPanel myPan;
+    private JTextField httpApiFanyiBaiduTextField;
 
     @Nls
     @Override
@@ -30,16 +31,13 @@ public class Setting implements Configurable {
     @Nullable
     @Override
     public String getHelpTopic() {
-        return null;
+        return "";
     }
 
     @Nullable
     @Override
     public JComponent createComponent() {
-        String id = PropertiesComponent.getInstance().getValue(KEY_APP_ID, "");
-        String key = PropertiesComponent.getInstance().getValue(KEY_APP_KEY, "");
-        etAppid.setText(id);
-        etAppKey.setText(key);
+        reset();
         return myPan;
     }
 
@@ -67,8 +65,10 @@ public class Setting implements Configurable {
 
     @Override
     public void reset() {
-        etAppid.setText("");
-        etAppKey.setText("");
+        String id = PropertiesComponent.getInstance().getValue(KEY_APP_ID, "");
+        String key = PropertiesComponent.getInstance().getValue(KEY_APP_KEY, "");
+        etAppid.setText(id);
+        etAppKey.setText(key);
     }
 
     /**
@@ -76,6 +76,6 @@ public class Setting implements Configurable {
      */
     @Override
     public void disposeUIResources() {
-
+        reset();
     }
 }

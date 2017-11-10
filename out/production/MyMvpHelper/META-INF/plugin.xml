@@ -1,7 +1,7 @@
 <idea-plugin version="2">
     <id>cn.yzl.mvphelper</id>
     <name>BaiDuTranslate</name>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
     <vendor email="yizeliang@126.com" url="https://github.com/yizeliang">github_yzl</vendor>
 
     <description><![CDATA[
@@ -10,8 +10,8 @@
 
     <change-notes>
         <![CDATA[
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>
+      1 完成基本功能<br>
+      2 修复若干问题<br>
     ]]>
     </change-notes>
 

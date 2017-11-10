@@ -25,6 +25,7 @@ public class TransApi {
                 }
             }
         }
+        INSTANCE.resetAppId();
         return INSTANCE;
     }
 
