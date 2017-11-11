@@ -12,8 +12,6 @@ fork自 https://github.com/a483210/GoogleTranslation
 # 原README
 
 
-
-
 ![菜单](./images/editor_popup_menu.png)
 ![英文转中文](./images/entozh.png)
 ![中文转英文](./images/zhtoen.png)
