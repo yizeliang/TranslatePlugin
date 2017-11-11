@@ -1,5 +1,19 @@
 # GoogleTranslation
 
+
+## 修改记录
+
+- 添加汉字自动转换为驼峰变量名
+- 修改快捷键为alt+m
+- 修改id等,防止冲突
+- 不得不说,api由百度转换成谷歌的之后,翻译效果好多了
+fork自 https://github.com/a483210/GoogleTranslation
+
+# 原README
+
+
+
+
 ![菜单](./images/editor_popup_menu.png)
 ![英文转中文](./images/entozh.png)
 ![中文转英文](./images/zhtoen.png)
