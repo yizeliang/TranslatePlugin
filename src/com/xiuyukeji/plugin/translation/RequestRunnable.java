@@ -1,6 +1,7 @@
 package com.xiuyukeji.plugin.translation;
 
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.ui.popup.Balloon;
@@ -10,6 +11,7 @@ import com.intellij.ui.JBColor;
 import com.intellij.ui.popup.PopupFactoryImpl;
 import com.xiuyukeji.plugin.translation.translator.impl.GoogleTranslator;
 import com.xiuyukeji.plugin.translation.translator.trans.Language;
+import com.xiuyukeji.plugin.translation.translator.ui.ResultPicker;
 import com.xiuyukeji.plugin.translation.translator.utils.StringUtil;
 
 /**
@@ -21,10 +23,8 @@ class RequestRunnable implements Runnable {
     private GoogleTranslator mGoogleTranslator;
     private Editor mEditor;
     private String mQuery;
-    AnActionEvent event;
 
-    RequestRunnable(AnActionEvent event, GoogleTranslator translator, Editor editor, String query) {
-        this.event = event;
+    RequestRunnable(GoogleTranslator translator, Editor editor, String query) {
         this.mEditor = editor;
         this.mQuery = query;
         this.mGoogleTranslator = translator;
@@ -43,12 +43,19 @@ class RequestRunnable implements Runnable {
             showPopupBalloon("翻译出错！");
         }
         if (flag) {
-            //由中文翻译为英文的时候
-            //生成驼峰变量名
-            String resultText = StringUtil.upDataString(text);
-            StringUtil.changeSelectText(event, resultText);
+            ResultPicker dialog = new ResultPicker(mEditor,text);
+            dialog.pack();
+            dialog.setVisible(true);
         } else {
             showPopupBalloon("翻译：" + text);
+        }
+    }
+
+    private void chageText(String pickerString) {
+        try {
+            StringUtil.changeSelectText(mEditor, pickerString);
+        } catch (Exception e) {
+
         }
     }
 

@@ -49,9 +49,7 @@ public class GoogleTranslation extends AnAction {
         String queryText = strip(addBlanks(selectedText));
 
         WriteCommandAction.runWriteCommandAction(event.getProject(),
-                new RequestRunnable(event, mTranslator, editor, queryText));
-
-//        new Thread(new RequestRunnable(event, mTranslator, editor, queryText)).start();
+                new RequestRunnable(mTranslator, editor, queryText));
     }
 
     private String getCurrentWords(Editor editor) {

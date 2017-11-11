@@ -1,13 +1,11 @@
 package com.xiuyukeji.plugin.translation.translator.utils;
 
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.PlatformDataKeys;
-import com.intellij.openapi.command.WriteCommandAction;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.editor.SelectionModel;
-import com.intellij.openapi.project.Project;
+import org.apache.http.util.TextUtils;
 
+import javax.swing.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -19,14 +17,15 @@ public class StringUtil {
     /**
      * 替换文字
      *
-     * @param event
      * @param text
      */
-    public static void changeSelectText(AnActionEvent event, String text) {
-        Editor mEditor = event.getData(PlatformDataKeys.EDITOR);
-        Project mProject = event.getData(PlatformDataKeys.PROJECT);
-        Document document = mEditor.getDocument();
-        SelectionModel selectionModel = mEditor.getSelectionModel();
+    public static void changeSelectText(Editor editor, String text) {
+        if (editor == null ||
+                TextUtils.isEmpty(text)) {
+            return;
+        }
+        Document document = editor.getDocument();
+        SelectionModel selectionModel = editor.getSelectionModel();
 
         final int start = selectionModel.getSelectionStart();
         final int end = selectionModel.getSelectionEnd();
@@ -59,22 +58,31 @@ public class StringUtil {
     /**
      * 转换一个句子 为驼峰式
      *
+     * @param firstUpperCase 第一个字母是否大写,大写是针对类名
      * @return
      */
-    public static String upDataString(String string) {
+    public static String upDataString(String string, boolean firstUpperCase) {
         if (string.contains(" ")) {
             String[] split = string.split(" ");
             String result = "";
             for (int i = 0; i < split.length; i++) {
                 if (i == 0) {
-                    result += lowDataFirstChar(split[i]);
+                    if (firstUpperCase) {
+                        result += upDataFirstChar(split[i]);
+                    } else {
+                        result += lowDataFirstChar(split[i]);
+                    }
                 } else {
                     result += upDataFirstChar(split[i]);
                 }
             }
             return result;
         } else {
-            return lowDataFirstChar(string);
+            if (firstUpperCase) {
+                return upDataFirstChar(string);
+            } else {
+                return lowDataFirstChar(string);
+            }
         }
     }
 
@@ -102,5 +110,31 @@ public class StringUtil {
         String end = word.substring(1, word.length());
         word = start.toUpperCase() + end;
         return word;
+    }
+
+    /**
+     * 针对英文
+     * 将一个翻译结果组装成一个数据模型
+     *
+     * @param model
+     * @param result
+     */
+    public static void setResultType(DefaultListModel model, String result) {
+        if (model == null) {
+            return;
+        }
+        //驼峰成员变量
+        model.addElement(upDataString(result, false));
+        model.addElement(upDataString(result, true));
+        //全局变量
+        model.addElement(result.replaceAll(" ", "_").toUpperCase());
+        //原句 针对注释
+        //这里不再处理任何大小写
+        model.addElement(result);
+        //扩展
+        //KEY,RESULT
+        model.addElement("KEY_" + result.replaceAll(" ", "_").toUpperCase());
+        model.addElement("RESULT_" + result.replaceAll(" ", "_").toUpperCase());
+        model.addElement("TYPE_" + result.replaceAll(" ", "_").toUpperCase());
     }
 }
