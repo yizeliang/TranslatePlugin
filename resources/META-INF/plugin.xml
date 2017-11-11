@@ -31,7 +31,7 @@
         <!-- Add your actions here -->
 
         <action id="GoogleTranslation" class="com.xiuyukeji.plugin.translation.GoogleTranslation"
-                text="GoogleTranslate" description="谷歌翻译">
+                text="GoogleTranslateYZL" description="谷歌翻译">
             <add-to-group group-id="EditMenu" anchor="first"/>
             <add-to-group group-id="EditorPopupMenu" anchor="first"/>
             <keyboard-shortcut keymap="$default" first-keystroke="alt m"/>

@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.yzl.translation_google</id>
     <name>GoogleTranslationYzl</name>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <vendor email="zeliangyi@gmail.com" url="https://github.com/yizeliang/TranslatePlugin/tree/google_translate">
         zeliangyi@gmail.com
     </vendor>
@@ -11,7 +11,7 @@
     </description>
 
     <change-notes><![CDATA[
-    完成像主分支那样的功能
+    1 增加备选
     ]]>
     </change-notes>
 
@@ -31,7 +31,7 @@
         <!-- Add your actions here -->
 
         <action id="GoogleTranslation" class="com.xiuyukeji.plugin.translation.GoogleTranslation"
-                text="GoogleTranslate" description="谷歌翻译">
+                text="GoogleTranslateYZL" description="谷歌翻译">
             <add-to-group group-id="EditMenu" anchor="first"/>
             <add-to-group group-id="EditorPopupMenu" anchor="first"/>
             <keyboard-shortcut keymap="$default" first-keystroke="alt m"/>
