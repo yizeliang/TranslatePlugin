@@ -3,6 +3,7 @@ package com.xiuyukeji.plugin.translation;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
+import com.intellij.openapi.command.WriteCommandAction;
 import com.intellij.openapi.editor.CaretModel;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.editor.Editor;
@@ -46,7 +47,11 @@ public class GoogleTranslation extends AnAction {
             }
         }
         String queryText = strip(addBlanks(selectedText));
-        new Thread(new RequestRunnable(mTranslator, editor, queryText)).start();
+
+        WriteCommandAction.runWriteCommandAction(event.getProject(),
+                new RequestRunnable(event, mTranslator, editor, queryText));
+
+//        new Thread(new RequestRunnable(event, mTranslator, editor, queryText)).start();
     }
 
     private String getCurrentWords(Editor editor) {

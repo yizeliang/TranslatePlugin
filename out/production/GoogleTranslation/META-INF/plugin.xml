@@ -1,6 +1,6 @@
 <idea-plugin>
     <id>com.yzl.translation_google</id>
-    <name>GoogleTranslationYzl</name>
+    <name>GoogleTranslationAlterByYzl</name>
     <version>1.0.0</version>
     <vendor email="zeliangyi@gmail.com" url="https://github.com/yizeliang/TranslatePlugin/tree/google_translate">
         zeliangyi@gmail.com
