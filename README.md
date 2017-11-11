@@ -1,6 +1,8 @@
 # GoogleTranslation
 
 
+![演示](https://github.com/yizeliang/TranslatePlugin/blob/google_translate/2.gif)
+
 ## 修改记录
 
 - 添加汉字自动转换为驼峰变量名
