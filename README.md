@@ -1,5 +1,6 @@
 # GoogleTranslation
 
+主要针对汉字对英文的翻译,英语->汉字的翻译是一样的
 
 ![针对英语->汉字的翻译](https://github.com/yizeliang/TranslatePlugin/blob/google_translate/2.gif)
 
