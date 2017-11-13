@@ -2,6 +2,8 @@
 
 ## 说明
 
+googleapi 请看google_translate分支
+
 
 采用百度翻译API
 
