@@ -1,7 +1,7 @@
 # GoogleTranslation
 
 
-![演示](https://github.com/yizeliang/TranslatePlugin/blob/google_translate/2.gif)
+![针对英语->汉字的翻译](https://github.com/yizeliang/TranslatePlugin/blob/google_translate/2.gif)
 
 ## 修改记录
 
