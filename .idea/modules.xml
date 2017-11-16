@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MyMvpHelper.iml" filepath="$PROJECT_DIR$/MyMvpHelper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BaiduTraslatePlugin.iml" filepath="$PROJECT_DIR$/BaiduTraslatePlugin.iml" />
     </modules>
   </component>
 </project>

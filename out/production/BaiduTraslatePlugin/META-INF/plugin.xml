@@ -1,0 +1,36 @@
+<idea-plugin version="2">
+    <id>cn.yzl.translate_baidu</id>
+    <name>BaiDuTranslate</name>
+    <version>1.1.0</version>
+    <vendor email="yizeliang@126.com" url="https://github.com/yizeliang">github_yzl</vendor>
+
+    <description><![CDATA[
+     翻译<br>
+    ]]></description>
+
+    <change-notes>
+        <![CDATA[
+      1 完成基本功能<br>
+      2 修复若干问题<br>
+    ]]>
+    </change-notes>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="145.0"/>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.lang</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationConfigurable instance="cn.yzl.setting.Setting"/>
+    </extensions>
+
+    <actions>
+        <action id="Translate" class="cn.yzl.translate.Translate" text="Translate" description="翻译插件">
+            <add-to-group group-id="EditSelectWordGroup" anchor="first"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="alt M"/>
+        </action>
+    </actions>
+
+</idea-plugin>
